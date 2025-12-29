@@ -11,13 +11,13 @@ void main() {
   });
 
   test('String addition of an empty string will return 0', () {
-    String input = '';
-    int result = input.add();
+    const input = '';
+    final result = input.add();
     expect(result, 0);
   });
   test('String addition of a value which contains only a number', () {
-    String input = '23';
-    int result = input.add();
+    const input = '23';
+    final result = input.add();
     expect(result, 23);
   });
 }
