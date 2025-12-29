@@ -30,4 +30,13 @@ void main() {
       expect(result, 15);
     },
   );
+
+  test(
+    "String addition of delimiter (//[delimiter]\n[numbers…]) separated numbers should return the sum of all numbers",
+    () {
+      const input = '//;\n1;2;3';
+      final result = input.add();
+      expect(result, 6);
+    },
+  );
 }
