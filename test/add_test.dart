@@ -9,5 +9,9 @@ void main() {
     // Code to run after each test
   });
 
-  test('String addition of an empty string will return 0', () {});
+  test('String addition of an empty string will return 0', () {
+    String input = '';
+    int result = input.add();
+    expect(result, 0);
+  });
 }
