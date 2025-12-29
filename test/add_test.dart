@@ -39,4 +39,22 @@ void main() {
       expect(result, 6);
     },
   );
+
+  test(
+    "Addition of negative numbers will throw an exception: negative numbers not allowed <negative_number>.",
+    () {
+      const input = '4,-2,9,-5';
+      expect(
+        () => input.add(),
+        throwsA(
+          predicate(
+            (e) =>
+                e is Exception &&
+                e.toString() ==
+                    'Exception: negative numbers not allowed -2,-5.',
+          ),
+        ),
+      );
+    },
+  );
 }
