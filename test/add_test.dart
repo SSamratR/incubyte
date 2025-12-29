@@ -20,4 +20,13 @@ void main() {
     final result = input.add();
     expect(result, 23);
   });
+
+  test(
+    'String addition of comma separated numbers should return the sum of all numbers',
+    () {
+      const input = '4,2,9';
+      final result = input.add();
+      expect(result, 15);
+    },
+  );
 }
