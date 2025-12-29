@@ -15,4 +15,9 @@ void main() {
     int result = input.add();
     expect(result, 0);
   });
+  test('String addition of a value which contains only a number', () {
+    String input = '23';
+    int result = input.add();
+    expect(result, 23);
+  });
 }
