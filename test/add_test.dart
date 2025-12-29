@@ -21,4 +21,13 @@ void main() {
       expect(result, 15);
     },
   );
+
+  test(
+    'String addition of new line (\n) separated numbers should return the sum of all numbers',
+    () {
+      const input = '4\n2\n9';
+      final result = input.add();
+      expect(result, 15);
+    },
+  );
 }
