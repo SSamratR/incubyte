@@ -3,13 +3,17 @@ extension StringCalculatorExtension on String {
     if (isEmpty) {
       return 0;
     } else if (int.tryParse(this) != null) {
+      checkNegativeNumbers(this, ',');
       return int.parse(this);
-    } else if (contains(',') && split(',').isNotEmpty) {
-      final numbers = split(',').map((e) => int.parse(e)).toList();
-      return numbers.reduce((a, b) => a + b);
     } else if (startsWith('//')) {
       return delimiterAdd();
+    } else if (contains(',') && split(',').isNotEmpty) {
+      checkNegativeNumbers(this, ',');
+      final numbers = split(',').map((e) => int.parse(e)).toList();
+      return numbers.reduce((a, b) => a + b);
     } else if (contains('\n') && split('\n').isNotEmpty) {
+      print('Here4');
+      checkNegativeNumbers(this, '\n');
       final numbers = split('\n').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
     }
@@ -25,6 +29,17 @@ extension StringCalculatorExtension on String {
         .split(delimiter)
         .map((e) => int.parse(e))
         .toList();
+    checkNegativeNumbers(numbersPart, delimiter);
     return numbers.reduce((a, b) => a + b);
+  }
+
+  void checkNegativeNumbers(String input, String delimiter) {
+    print("input: $input");
+    print("error:${input.split(delimiter)}");
+    if (input.contains('-')) {
+      throw Exception(
+        'negative numbers not allowed ${input.split(delimiter).where((e) => e.startsWith('-')).join(',')}.',
+      );
+    }
   }
 }
