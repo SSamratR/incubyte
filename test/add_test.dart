@@ -47,50 +47,29 @@ void main() {
       const input2 = '//;\n1;-2;3;-5';
       const input3 = '1\n-4\n3\n-7';
       const input4 = '-2';
-      expect(
-        () => input1.add(),
-        throwsA(
-          predicate(
-            (e) =>
-                e is Exception &&
-                e.toString() ==
-                    'Exception: negative numbers not allowed -3,-1.',
-          ),
-        ),
+      expectNegativeNumbers(
+        input1,
+        'Exception: negative numbers not allowed -3,-1.',
       );
-      expect(
-        () => input2.add(),
-        throwsA(
-          predicate(
-            (e) =>
-                e is Exception &&
-                e.toString() ==
-                    'Exception: negative numbers not allowed -2,-5.',
-          ),
-        ),
+      expectNegativeNumbers(
+        input2,
+        'Exception: negative numbers not allowed -2,-5.',
       );
-      expect(
-        () => input3.add(),
-        throwsA(
-          predicate(
-            (e) =>
-                e is Exception &&
-                e.toString() ==
-                    'Exception: negative numbers not allowed -4,-7.',
-          ),
-        ),
+      expectNegativeNumbers(
+        input3,
+        'Exception: negative numbers not allowed -4,-7.',
       );
-
-      expect(
-        () => input4.add(),
-        throwsA(
-          predicate(
-            (e) =>
-                e is Exception &&
-                e.toString() == 'Exception: negative numbers not allowed -2.',
-          ),
-        ),
+      expectNegativeNumbers(
+        input4,
+        'Exception: negative numbers not allowed -2.',
       );
     },
+  );
+}
+
+void expectNegativeNumbers(String input, String errorMessage) {
+  expect(
+    () => input.add(),
+    throwsA(predicate((e) => e is Exception && e.toString() == errorMessage)),
   );
 }

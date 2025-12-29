@@ -12,7 +12,6 @@ extension StringCalculatorExtension on String {
       final numbers = split(',').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
     } else if (contains('\n') && split('\n').isNotEmpty) {
-      print('Here4');
       checkNegativeNumbers(this, '\n');
       final numbers = split('\n').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
@@ -34,8 +33,6 @@ extension StringCalculatorExtension on String {
   }
 
   void checkNegativeNumbers(String input, String delimiter) {
-    print("input: $input");
-    print("error:${input.split(delimiter)}");
     if (input.contains('-')) {
       throw Exception(
         'negative numbers not allowed ${input.split(delimiter).where((e) => e.startsWith('-')).join(',')}.',
