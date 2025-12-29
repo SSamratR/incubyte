@@ -7,6 +7,9 @@ extension StringCalculatorExtension on String {
     } else if (contains(',') && split(',').isNotEmpty) {
       final numbers = split(',').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
+    } else if (contains('\n') && split('\n').isNotEmpty) {
+      final numbers = split('\n').map((e) => int.parse(e)).toList();
+      return numbers.reduce((a, b) => a + b);
     }
 
     return length;
