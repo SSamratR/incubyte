@@ -29,6 +29,9 @@ extension StringCalculatorExtension on String {
         .map((e) => int.parse(e))
         .toList();
     checkNegativeNumbers(numbersPart, delimiter);
+    if (delimiter == "*") {
+      return numbers.reduce((a, b) => a * b);
+    }
     return numbers.reduce((a, b) => a + b);
   }
 

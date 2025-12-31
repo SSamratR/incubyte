@@ -45,7 +45,10 @@ class _StringCalculatorScreenState extends State<StringCalculatorScreen> {
       _result = '';
 
       try {
-        final sum = _controller.text.add();
+        // Replace literal \n with actual newlines
+        final processedInput = _controller.text.replaceAll(r'\n', '\n');
+        print("Input: $processedInput");
+        final sum = processedInput.add();
         _result = 'Result: $sum';
       } on Exception catch (e) {
         _errorMessage = e.toString();
@@ -194,5 +197,19 @@ class _StringCalculatorScreenState extends State<StringCalculatorScreen> {
         ],
       ),
     );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

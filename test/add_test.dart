@@ -41,6 +41,15 @@ void main() {
   );
 
   test(
+    "String multiplication of delimiter * (//[delimiter]\n[numbers…]) separated numbers should return the product of all numbers",
+    () {
+      const input = '//*\n1*5*3';
+      final result = input.add();
+      expect(result, 15);
+    },
+  );
+
+  test(
     "Addition of negative numbers will throw an exception: negative numbers not allowed <negative_number>.",
     () {
       const input1 = '4,-3,9,-1';
