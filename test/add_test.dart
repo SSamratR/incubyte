@@ -4,12 +4,12 @@ import 'package:incubyte/extension_add.dart';
 void main() {
   test('String addition of an empty string will return 0', () {
     const input = '';
-    final result = input.add();
+    final result = input.calculate();
     expect(result, 0);
   });
   test('String addition of a value which contains only a number', () {
     const input = '23';
-    final result = input.add();
+    final result = input.calculate();
     expect(result, 23);
   });
 
@@ -17,7 +17,7 @@ void main() {
     'String addition of comma separated numbers should return the sum of all numbers',
     () {
       const input = '4,2,9';
-      final result = input.add();
+      final result = input.calculate();
       expect(result, 15);
     },
   );
@@ -26,7 +26,7 @@ void main() {
     'String addition of new line (\n) separated numbers should return the sum of all numbers',
     () {
       const input = '4\n2\n9';
-      final result = input.add();
+      final result = input.calculate();
       expect(result, 15);
     },
   );
@@ -35,7 +35,7 @@ void main() {
     "String addition of delimiter (//[delimiter]\n[numbers…]) separated numbers should return the sum of all numbers",
     () {
       const input = '//;\n1;2;3';
-      final result = input.add();
+      final result = input.calculate();
       expect(result, 6);
     },
   );
@@ -44,7 +44,7 @@ void main() {
     "String multiplication of delimiter * (//[delimiter]\n[numbers…]) separated numbers should return the product of all numbers",
     () {
       const input = '//*\n1*5*3';
-      final result = input.add();
+      final result = input.calculate();
       expect(result, 15);
     },
   );
@@ -78,7 +78,7 @@ void main() {
 
 void expectNegativeNumbers(String input, String errorMessage) {
   expect(
-    () => input.add(),
+    () => input.calculate(),
     throwsA(predicate((e) => e is Exception && e.toString() == errorMessage)),
   );
 }

@@ -1,17 +1,21 @@
 extension StringCalculatorExtension on String {
-  int add() {
+  int calculate() {
     if (isEmpty) {
       return 0;
-    } else if (int.tryParse(this) != null) {
+    }
+    if (int.tryParse(this) != null) {
       checkNegativeNumbers(this, ',');
       return int.parse(this);
-    } else if (startsWith('//')) {
-      return delimiterAdd();
-    } else if (contains(',') && split(',').isNotEmpty) {
+    }
+    if (startsWith('//')) {
+      return calculateWithCustomDelimiter();
+    }
+    if (contains(',') && split(',').isNotEmpty) {
       checkNegativeNumbers(this, ',');
       final numbers = split(',').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
-    } else if (contains('\n') && split('\n').isNotEmpty) {
+    }
+    if (contains('\n') && split('\n').isNotEmpty) {
       checkNegativeNumbers(this, '\n');
       final numbers = split('\n').map((e) => int.parse(e)).toList();
       return numbers.reduce((a, b) => a + b);
@@ -20,7 +24,7 @@ extension StringCalculatorExtension on String {
     return length;
   }
 
-  int delimiterAdd() {
+  int calculateWithCustomDelimiter() {
     final delimiterEndIndex = indexOf('\n');
     final delimiter = substring(2, delimiterEndIndex);
     final numbersPart = substring(delimiterEndIndex + 1);

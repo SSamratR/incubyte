@@ -48,7 +48,7 @@ class _StringCalculatorScreenState extends State<StringCalculatorScreen> {
         // Replace literal \n with actual newlines
         final processedInput = _controller.text.replaceAll(r'\n', '\n');
         print("Input: $processedInput");
-        final sum = processedInput.add();
+        final sum = processedInput.calculate();
         _result = 'Result: $sum';
       } on Exception catch (e) {
         _errorMessage = e.toString();
