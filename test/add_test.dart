@@ -50,6 +50,15 @@ void main() {
   );
 
   test(
+    "String addition of odd numbers if delimiter o (//[delimiter]\n[numbers…])",
+    () {
+      const input = '//o\n1o5o3o8o4';
+      final result = input.calculate();
+      expect(result, 9);
+    },
+  );
+
+  test(
     "Addition of negative numbers will throw an exception: negative numbers not allowed <negative_number>.",
     () {
       const input1 = '4,-3,9,-1';

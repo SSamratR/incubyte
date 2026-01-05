@@ -36,6 +36,10 @@ extension StringCalculatorExtension on String {
     if (delimiter == "*") {
       return numbers.reduce((a, b) => a * b);
     }
+    if (delimiter == "o") {
+      final oddNumbers = numbers.where((e) => e.isOdd).toList();
+      return oddNumbers.reduce((a, b) => a + b);
+    }
     return numbers.reduce((a, b) => a + b);
   }
 
